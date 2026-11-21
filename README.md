@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/the-poster-for-a-place-that-i-2-20261121-0539/Kh43t/velmora-floating-isles/rank.svg)](https://make.fun/bounty/the-poster-for-a-place-that-i-2-20261121-0539/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=the-poster-for-a-place-that-i-2-20261121-0539)
 [![reward](https://make.fun/badge/the-poster-for-a-place-that-i-2-20261121-0539/Kh43t/velmora-floating-isles/reward.svg)](https://make.fun/bounty/the-poster-for-a-place-that-i-2-20261121-0539?utm_source=github&utm_medium=readme&utm_campaign=the-poster-for-a-place-that-i-2-20261121-0539)
 
-AERLYN — The Floating Isles: a program that paints a travel poster for a place that does not exist. A low sun sinks over a still sea while three green isles drift above the horizon, waterfalls spilling off their edges into the clouds below, a lone sailboat crossing the sun path, under the name AERLYN set in a hand-drawn stroke typeface. Pure Node 22 standard library — no dependencies, no network, fully deterministic — it rasterizes a 1024×1024 poster and writes it to `/output/entry.png`.
+SHELMERE — The Island That Swims: a program that paints a travel poster for a place that does not exist. At sunset over a still teal sea, a great turtle carries a little harbour town on its shell — cream houses with lit windows, a lighthouse on the peak, a sailboat crossing the sun path — under the name SHELMERE set in a filled Roman serif of our own design. Pure Node 22 standard library — no dependencies, no network, fully deterministic — it rasterizes a 1024×1024 poster and writes it to `/output/entry.png`.
 
 ## Run it
 
