@@ -1,4 +1,4 @@
-// VELMORA — The Floating Isles
+// AERLYN — The Floating Isles
 // A travel poster for a place that does not exist.
 // Pure Node 22 stdlib: rasterizes a 1024x1024 poster and writes /output/entry.png.
 // No network, no dependencies, fully deterministic (seeded randomness).
@@ -410,22 +410,47 @@ function paint(): void {
   poly([[70, 896], [92, 838], [114, 896]], hex("#0d1a24"), 1);
   poly([[104, 884], [122, 838], [140, 884]], hex("#0d1a24"), 1);
 
-  // 12. Type, set with intent: the name leads, the place follows.
+  // 12. A lone sailboat crossing the sun path — a human scale for the stay.
+  const BOAT: RGB = hex("#1a1430");
+  poly([[742, 812], [778, 812], [770, 824], [750, 824]], BOAT, 1);
+  poly([[758, 810], [758, 762], [786, 810]], hex("#ffe9c0"), 0.95);
+  poly([[754, 810], [754, 772], [736, 810]], hex("#f2c98a"), 0.95);
+  seg(758, 758, 758, 812, 3, BOAT, 1);
+  seg(748, 828, 772, 828, 3, hex("#ffcf8a"), 0.5);
+
+  // 13. Type, set with intent: the name leads, the place follows.
   const SHADOW: RGB = hex("#2a1240");
-  drawText("VELMORA", 512, 114, 15, 11, SHADOW, 0.55, 6);
-  drawText("VELMORA", 512, 108, 15, 11, CREAM, 1, 6);
+  drawText("AERLYN", 512, 114, 15, 11, SHADOW, 0.55, 6);
+  drawText("AERLYN", 512, 108, 15, 11, CREAM, 1, 6);
   drawText("THE FLOATING ISLES", 512, 246, 5.2, 4.5, hex("#ffd9a0"), 1, 3);
   // Small diamonds flanking the subtitle.
   poly([[196, 261], [202, 255], [208, 261], [202, 267]], hex("#ffd9a0"), 1);
   poly([[816, 261], [822, 255], [828, 261], [822, 267]], hex("#ffd9a0"), 1);
   drawText("WHERE THE SKY MEETS THE SEA", 512, 958, 4, 3.4, hex("#ffe9c0"), 0.92, 2.5);
 
-  // 13. A thin poster frame.
+  // 14. A thin poster frame.
   const FRAME: RGB = hex("#fff2cf");
   fillRect(26, 26, 998, 28.5, FRAME, 0.4);
   fillRect(26, 995.5, 998, 998, FRAME, 0.4);
   fillRect(26, 26, 28.5, 998, FRAME, 0.4);
   fillRect(995.5, 26, 998, 998, FRAME, 0.4);
+
+  // 15. A whisper of print grain so the flat colour reads as a poster,
+  //     not a screen gradient. One offset per 3x3 block: coarse enough to
+  //     stay far under the 1 MiB cap, fine enough to read as texture.
+  for (let by = 0; by < H; by += 3) {
+    for (let bx = 0; bx < W; bx += 3) {
+      const g = (rand() - 0.5) * 10;
+      for (let y = by; y < Math.min(by + 3, H); y++) {
+        for (let x = bx; x < Math.min(bx + 3, W); x++) {
+          const i = (y * W + x) * 3;
+          buf[i] = clamp(buf[i] + g, 0, 255);
+          buf[i + 1] = clamp(buf[i + 1] + g, 0, 255);
+          buf[i + 2] = clamp(buf[i + 2] + g, 0, 255);
+        }
+      }
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
